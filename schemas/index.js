@@ -1,3 +1,3 @@
-const { addSchema, putSchema } = require("./contactsSchemas");
+const { addSchema, putSchema, patchSchema } = require("./contactsSchemas");
 
-module.exports = { addSchema, putSchema };
+module.exports = { addSchema, putSchema, patchSchema };
