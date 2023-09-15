@@ -20,13 +20,14 @@ const getById = async (req, res, next) => {
 
 const add = async (req, res) => {
   const { id: owner } = req.user;
-  const result = await Contact.create({ ...req.body, owner }, "-owner, -__v");
+  const result = await Contact.create({ ...req.body, owner });
+  console.log("result", result);
   res.status(201).json(result);
 };
 
 const remove = async (req, res, next) => {
   const { contactId } = req.params;
-  const result = await Contact.findByIdAndDelete(contactId, "-owner -__v");
+  const result = await Contact.findByIdAndRemove(contactId);
   if (!result) {
     next();
   }
